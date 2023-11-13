@@ -36,31 +36,35 @@ def math_quiz():
     Maths quiz with a total of 3 questions, with each question carrying 1 point.
     """
     score = 0
-    total_questions = 3      ##Total number of questions in the quiz
+    total_questions = 3      # Maximum number of questions in the quiz.
 
     print("Welcome to the Math Quiz Game!")
     print("You will be presented with math problems, and you need to provide the correct answers.")
 
+    # Generating random integers and operators for problem solving.
     for _ in range(total_questions):
-        number1 = generate_random_int(1, 10)
-        number2 = generate_random_int(1, 5)
-        operator = choose_operator()
+        number1 = generate_random_int(1, 10)   # Generates a random integer between 1 and 10.
+        number2 = generate_random_int(1, 5)    # Generates a random integer between 1 and 10.
+        operator = choose_operator()           # Chooses a random operator for solving the problem.
 
         problem, answer = calculation(number1, number2, operator)
         print(f"\nQuestion: {problem}")
 
+        # Verifying if the user input is an integer, else returns an error.
         try:
-            user_answer = int(input("Your answer: ")) 
+            user_answer = int(input("Your answer: "))
         except ValueError:
-            print("Invalid input. Please enter a valid number.")
+            print("Invalid input. Please enter a valid number.")   # returns an error if the user input is anything other than an integer.
             continue
 
+        # Checking if the user answer matched with the actual result
         if user_answer == answer:
             print("Correct! You earned a point.")
-            score += 1
+            score += 1   # Score increases by 1 point for each correct answers.
         else:
             print(f"Wrong answer. The correct answer is {answer}.")
 
+    # Final display of the game score.
     print(f"\nGame over! Your score is: {score}/{total_questions}")
 
 if __name__ == "__main__":
