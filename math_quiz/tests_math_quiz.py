@@ -13,18 +13,24 @@ class TestMathGame(unittest.TestCase):
             self.assertTrue(min_val <= rand_num <= max_val)
 
     def test_choose_operator(self):
-        # TODO
-        pass
+        # test if the chosen operators are either '+','-' or '*'.
+        operator  = choose_operator()
+        self.assertIn(operator , ['+', '-', '*'])
 
     def test_calculation(self):
             test_cases = [
+                # Addition test case
                 (5, 2, '+', '5 + 2', 7),
-                ''' TODO add more test cases here '''
+                # Subtraction test case
+                (10, 4, '-', '10 - 4', 6),
+                # Multiplication test case
+                (3, 6, '*', '3 * 6', 18),
             ]
 
-            for num1, num2, operator, expected_problem, expected_answer in test_cases:
-                # TODO
-                pass
+            for number1, number2, operator, question, problem_result in test_cases:
+                result = calculation(number1, number2, operator)
+                # check if the calculation matches with the actual function results.
+                self.assertEqual(result, (question, problem_result))
 
 if __name__ == "__main__":
     unittest.main()

@@ -22,14 +22,14 @@ def calculation(number1, number2, operator):
     : number2: number 2
     : operator: mathematical operator
     """
-    final_result = f"{number1} {operator} {number2}"
+    question = f"{number1} {operator} {number2}"
     if operator == '+':
-        result = number1 + number2
+        problem_result = number1 + number2
     elif operator == '-':
-        result = number1 - number2
+        problem_result = number1 - number2
     else:
-        result = number1 * number2
-    return final_result, result
+        problem_result = number1 * number2
+    return question, problem_result
 
 def math_quiz():
     """
@@ -43,9 +43,9 @@ def math_quiz():
 
     # Generating random integers and operators for problem solving.
     for _ in range(total_questions):
-        number1 = generate_random_int(1, 10)   # Generates a random integer between 1 and 10.
-        number2 = generate_random_int(1, 5)    # Generates a random integer between 1 and 10.
-        operator = choose_operator()           # Chooses a random operator for solving the problem.
+        number1 = generate_random_int(1, 10) # Generates a random integer between 1 and 10.
+        number2 = generate_random_int(1, 5)  # Generates a random integer between 1 and 10.
+        operator = choose_operator()         # Chooses a random operator for solving the problem.
 
         problem, answer = calculation(number1, number2, operator)
         print(f"\nQuestion: {problem}")
@@ -54,10 +54,11 @@ def math_quiz():
         try:
             user_answer = int(input("Your answer: "))
         except ValueError:
-            print("Invalid input. Please enter a valid number.")   # returns an error if the user input is anything other than an integer.
+            # returns error if user output isn't integer
+            print("Invalid input. Please enter a valid number.")
             continue
 
-        # Checking if the user answer matched with the actual result
+        # Checking if the user answer matched with the actual problem_result
         if user_answer == answer:
             print("Correct! You earned a point.")
             score += 1   # Score increases by 1 point for each correct answers.
